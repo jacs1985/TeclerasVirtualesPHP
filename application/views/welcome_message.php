@@ -18,5 +18,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 
 	<div class="panel-footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></div>
+
+
+	<div> Hola soy Omar CIfuentes (CHiko bellako!)</div>
+	<div>Hola soy Pablo Olivares</div>
+	<div>Hoola soy Aaron ...</div>
+	<div>Hola Soy italo fiel</div>
+	<div>hola a todos soy  juan andres</div>
+	<div>hola soy luiss</div>
+	<div>hola soy Yadhir Lopez</div>
 	</div>
 
