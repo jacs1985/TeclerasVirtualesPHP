@@ -47,6 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php if($this->session->userdata('is_admin')) { ?>
           <li><?php echo anchor(base_url() . 'estudiantes', 'Estudiantes'); ?></li>
           <li><?php echo anchor(base_url() . 'docentes', 'Docentes'); ?></li>
+          <li><?php echo anchor(base_url() . 'asignaturas', 'Asignaturas'); ?></li>
         <?php } ?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
