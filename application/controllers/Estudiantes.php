@@ -4,7 +4,9 @@ class Estudiantes extends CI_Controller {
     parent::__construct();
     $this->load->model('estudiantes_model');
     if($this->session->userdata('is_admin') == false) { // 1: Admin
-      redirect(site_url('login'));
+      if($this->session->userdata('profile') != 2) {
+        redirect(site_url('login'));
+      }
     }
   }
 
@@ -76,4 +78,37 @@ class Estudiantes extends CI_Controller {
     redirect(base_url('estudiantes'));
   }
   
+  public function ingresarClase() {
+    
+
+    /**
+     * form_validation es un validador del formulario que enviaste
+     * El primer parámetro es el nombre del campo que enviaste desde el formulario
+     * El segundo es una descripción del campo, generalmente es el mismo nombre que colocaste en el formulario
+     * El tercero son las restricciones del campo, es requerido, ya que no puede ir vacío, ya que es necesario para poder entrar a una clase.
+     */
+    $this->form_validation->set_rules('password', 'Contraseña', 'required');
+    
+    if (!$this->form_validation->run()) {
+      $data['titulo'] = 'Ingresar a clase';
+      /**
+       * Si el formulario no ha sido cargado aún, carga la vista
+       */
+      $this->load->template('estudiantes_view', $data);
+    } else {
+      /**
+       * En caso contrario, envía el formulario con los datos
+       */
+      $password = $this->input->post('password');
+      $check_user = $this->estudiantes_model->ingresarClase($password);
+      if(check_user==true)
+      $this->estudiantes_model->ingresarClase($password);
+      //redirect(base_url('estudiantes/claseAlgo'));
+    }
+  }
+
+  public function vista_clase() {
+    $data['titulo'] = 'Ingresar a clase';
+    $this->load->template('estudiantes/vista_clase',$data);
+  }
 }

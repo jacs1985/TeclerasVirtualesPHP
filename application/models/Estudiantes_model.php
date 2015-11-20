@@ -37,4 +37,16 @@ class Estudiantes_model extends CI_Model {
     $this->db->delete('tv_estudiante');
     redirect(base_url('estudiantes'));
   }
+
+  public function ingresarClase($password) {
+    /**
+     * Una forma más elegante de realizar consultas, Hay que aprovechar los recursos que ofrece el framework.
+     */
+    $query = $this->db->get_where('tv_clase', array('CLA_PASSWORD' => $password));
+    if ($query->num_rows() > 0) {
+      redirect(base_url('estudiantes/vista_clase'));
+    } else {
+      redirect(base_url('estudiantes/ingresarClase?fail'));
+    }
+  }
 }
